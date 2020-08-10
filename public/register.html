@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+	<script src="js/jquery.min.js"></script>
+	<script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+</head>
+<body style="background: #f2f2f2;">
+    <div class="wrap">
+        <div class="top">
+            <div class="main">
+                <p>
+                    欢迎访问麦雪蛋糕官方商城！
+                </p>
+                <ul class="list-unstyled d-flex top-m">
+                    <li class="pl-2">
+                        <p>
+                            Hi,欢迎访问麦雪蛋糕官网
+                            <a href="">&nbsp;[&nbsp;登录&nbsp|</a>
+                            <a href="">&nbsp;注册&nbsp]</a>
+                        </p>
+                    </li>
+                    <li class="pl-2">
+                        <p><a href="">我的订单</a></p>
+                    </li>
+                    <li class="pl-2">
+                        <p><a href="">会员中心</a></p>
+                    </li>
+                    <li class="pl-2">
+                        <p><a href="">服务中心</a></p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+    <div class="lg">
+        <img src="img/front_logo.gif" alt="">
+    </div>
+    <ul class="lsb list-unstyled">
+        <li>
+            个人用户
+        </li>
+    </ul>
+    <div id="app" class="panesb mt-5">
+        <div class="paneb" style="display: block;">
+            <div class="for">
+                <table>
+                    <tbody width="100%" border="0" cellspacing="0" cellpadding="0">
+                        <tr>
+                            <td width="150" height="60">
+                                <p class="pt-3">用户名：</p>
+                            </td>
+                            <td width="400" height="60" colspan="3">
+                                <input v-model="username" class="zc_txt" type="text" @blur="checkUsername">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="150" height="60">
+                                <p class="pt-3">请设置密码：</p>
+                            </td>
+                            <td width="400" height="60" colspan="3">
+                                <input v-model="passworld" @blur="checkPassworld" class="zc_txt" type="text">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="150" height="60">
+                                <p class="pt-3">请确认密码：</p>
+                            </td>
+                            <td width="400" height="60" colspan="3">
+                                <input class="zc_txt" type="text" v-model="repassowrld" @blur="checksome">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="150" height="60">
+                                <p class="pt-3">手机：</p>
+                            </td>
+                            <td width="400" height="60" colspan="3">
+                                <input class="zc_txt" type="text" v-model="phone" @blur="checkPhonenumber">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="150" height="60">
+                                <p class="pt-3">短信验证码：</p>
+                            </td>
+                            <td width="140" height="60" colspan="3">
+                                <input class="zc_txt1 pr-2" type="text">
+                                <input name="button" type="button" style="border:none; width:auto; padding:0 5px;" value="获取验证码" class="ok">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td width="150" height="60">
+
+                            </td>
+                            <td width="20" height="60" class="zui">
+                                <input type="checkbox" value="1">    
+                            </td>
+                            <td class="fudong">
+                                <p>
+                                    我已经看过并接受《<a href="">用户协议</a>》
+                                    <a href="">已有账号</a>
+                                    <a href="">马上登录</a>
+                                </p>
+                            </td>
+                            
+                        </tr>
+                        <tr>
+                            <td width="50" heihgt="60"></td>
+                            <td width="450" height="60" colspan="3" class="nbb">
+                                <input @click=hand() class="ok1" style="border:none" type="submit" value="立即注册">
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <div class="tomiddle">
+        <ul class="list-unstyled d-flex tomiddle1">
+            <li class=""><a class="bott pr-2" style="border-right: 1px solid black;" href="">淘宝网</a></li>
+            <li class="pl-2"><a class="bott" href="">天猫</a></li>
+        </ul>
+        <p class="tomiddle11">
+            ©2017 麦雪蛋糕官网 版权所有 网站ICP备
+            <a class="toop pl-2" href="">桂ICP备17002731号</a>
+        </p>
+    </div>
+    <script>
+        new Vue({
+            el:"#app",
+            data:{
+               
+                username:'',
+                usernameState:'',
+                passworld:'',
+                passworldState:'',
+                repassowrld:'',
+                some:'',
+                phone:'',
+                phoneState:'',
+                isNULL:''
+            },
+            methods:{
+                checkUsername(){
+                let username = this.username;
+                //校验用户名,用户名的规则为:字母、数字及下划线的组合,长度为6~12个字符
+                let usernameRegExp = /^[0-9A-Za-z_]{6,12}$/
+                if(usernameRegExp.test(username)){
+                  alert("you are right")
+                  this.usernameState="1"
+                  return true;
+                } else{
+                
+                  return false;
+                }
+            },
+            checkPassworld(){
+                let passworld=this.passworld;
+                let passworldRegExp = /^[0-9A-Za-z_]{6,12}$/;
+                if(passworldRegExp.test(passworld)){
+                    this.passworldState='1'
+                    return true;
+                }
+                else{
+                   
+                    
+                    return false;
+                }
+            },
+            checksome(){
+                if(this.repassowrld==this.passworld){
+                    this.some="1";
+                    console.log("正确")
+                }
+                else{
+                   
+                }
+            },
+            checkPhonenumber(){
+                let phoneRegExp=/^1[3456789]\d{9}$/;
+                let phone=this.phone;
+                if(phoneRegExp.test(phone)){
+                    this.phoneState="1"
+                    return true;
+                }
+                else{
+                    setTimeout(() => {
+                        alert("手机号不正确，请重新输入")
+                    }, 1000);
+                    return false;
+                }
+            },
+            hand(){
+               
+                    console.log("再次确认")
+                    $.ajax({
+                    url:"http://127.0.0.1:8080/user/reg",
+                    type: "post",
+                    data:{ username:this.username,passworld:this.passworld,phone:this.phone },
+                    dataType:"json" ,
+                    success:function(result){
+                        if(result=='1'){
+                            alert("请输入不同的用户名")
+                            
+                        }
+                        else{
+                            console.log("注册成功");
+                            $.ajax({
+                                url:"http://127.0.0.1:8080/user/reg",
+                                type: "post",
+                                data:{ username:this.username,passworld:this.passworld,phone:this.phone },
+                                dataType:"json" ,
+                                success:function(result){
+                                    console.log(result)
+                                }
+                            })
+                            
+                        }
+                        console.log(result);
+                        
+                    }
+                })
+                
+            }
+         }
+        })
+    </script>
+</body>
+</html>

@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/animate.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/style.css">
+	  <script src="js/jquery.min.js"></script>
+	  <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script>
+    <script src="js/jquery-1.11.3.js"></script>
+    <script src="js/vue.js"></script>
+    <title>Document</title>
+    <style>
+    
+    </style>
+</head>
+<body>
+  
+  
+  <div id="head1" class="head">
+    <div class="container-fuild t3 mr1">
+      <div class="d-flex ">
+        <p>
+          <p class="color">Hi,欢迎访问麦雪蛋糕官网</p>
+          <a href="http://127.0.0.1:8080/login.html" class="color pl-1"> [登录|</a>
+          <a href="http://127.0.0.1:8080/register.html" class="color">注册]</a>
+        </p>
+        <ul class="list-unstyled d-flex justify-content-end w-75">
+          <li>
+            <a href=""><img src="img/hongbao.png" alt=""></a>
+          </li>
+          <li class="d2">
+            <span id="span111" class="cr">0</span>
+            <a class="headone" href=""><img src="img/gouwuche.png" alt=""></a>
+          </li>
+          <li class="">  
+            <a class="headone theh alla" href="">我的麦雪</a>
+          </li>
+          <li id="my_chart">
+            <a class="headone theh" href="http://127.0.0.1:8080/chart.html">我的订单 |</a>
+          </li>
+          <li>
+            <a class="headone theh" href=""><img src="img/shouji.png" alt="">手机网站</a>
+          </li>
+          <li>
+            <a class="headone theh" href=""><img src="img/shouji.png" alt="">公众号</a>
+          </li>
+          <li>
+              <a class="headone theh" href=""><img src="img/shouji.png" alt="">微信客户</a>
+            </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div class="nav clearFloat">
+    <div class="container-fiuled t1 t3">
+      <div class="mr row no-gutter w-100">
+        <div class="col-3 no">
+          <div>
+            <img class="pl-5" src="img/front_logo.gif" alt="">
+          </div>
+        </div>
+        <div class="col-6 no">
+          <div id="d11" class="pr-5">
+            <ul class="nav_wrap d-flex list-unstyled pt-4 justify-content-around">
+              <li><a href="">首页</a></li>
+              <li><a href="">品牌故事</a></li>
+              <li><a href="">订购指南</a></li>
+              <li><a href="">乳脂奶油蛋糕</a></li>
+              <li><a href="">慕斯蛋糕</a></li>
+            </ul>
+          </div>
+        </div>
+        <div class="col-3 no">
+          <div class="">
+              <ul class="list-unstyled no">
+                <li class="li1">订购热线:</li>
+                <li class="li2">0771-3928662</li>
+                <li class="li3">订购时间：8：00-18：00 配送时间：10：00-21：00</li>
+              </ul>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container-fiuled">
+      <div id="demo" class="carousel slide" data-ride="carousel">
+          <ul class="carousel-indicators">
+              <li data-target="#demo" data-slide-to="0" class="active"></li>
+              <li data-target="#demo" data-slide-to="1"></li>
+              <li data-target="#demo" data-slide-to="2"></li>
+            </ul>
+            <div class="carousel-inner">
+                <div class="carousel-item active w-100">
+                  <img class="w-100 h-50" src="img/1.jpg">
+                </div>
+                <div class="carousel-item w-100">
+                  <img class="w-100 h-50" src="img/2.jpg">
+                </div>
+                <div class="carousel-item w-100">
+                  <img class="w-100 h-50" src="img/3.jpg">
+                </div>
+              </div>
+             
+      </div>
+  </div>
+  <div class="tofix">
+    <a class="tofixsub" href="">推荐</a>
+    <a class="tofixsub" href="">热卖</a>
+  </div>
+  <div class="container">
+    <div class="mb-5">
+      <div class="f-tex">
+        <img class="pic-c" src="img/t_l_p.png" alt="">
+        <h2 class="tex">今日推荐</h2>
+      </div>
+    </div>
+  </div>
+ <!--测试-->
+ 
+    <div id="d111" class="container-fiuled" >
+      <div id="d112" class="row no-gutter d-flex test1">
+        
+        
+      
+      </div>
+    </div>
+    
+     <!--底部-->
+     
+      <div class="page_buttom mb-3">
+        <button id="dd4" class="page_button">-</button>
+        <p id="pdisplay">1</p>
+        <button id="dd3" class="page_button">+</button>
+      </div>
+     
+  <script>
+    var theprice=0;
+    var thename='';
+     var a=1;
+      var m=10;
+    console.log('bd',a)
+    $.ajax({
+      // url:"http://xzserver.applinzi.com/details",
+      url:"http://127.0.0.1:8080/user/detail",
+      type: "get",
+      data:{ fid:`${a}`},
+      dataType:"json" ,
+      success:function( result ){
+       
+      
+       
+       for(var i=0;i<4;i++){
+         var count=parseInt(result[i].sugar);
+         console.log(i)
+         var sugar1=``;
+         for(var j=0;j<count;j++){
+          sugar1=sugar1+`<li><img class="theimg1" src="img/tang.png" alt=""></li>`;
+         }
+        
+       
+       var text=` <div class="col-lg-6 col-md-12 p-0 m-0 d-flex just-content-center mb-5">
+        <div>
+          <div class="theli ml-3">
+            <a href=""><img class="theborderl  thetotal m-0 " src="${result[i].cake_pic}" alt=""></a>
+            <div class="cw_l">
+              <span class="spl">
+                ${result[i].name}
+              </span>
+              <span class="spr">
+                ${result[i].price}
+              </span>
+            </div>
+            <div class="cw_down">
+                <div class="cd_l pl-3 mt-2 pt-1 tmt d-flex">
+                  <p class="thhline thehight">甜度:</p>
+                  <ul class="list-unstyled d-flex theline ml-2">
+                      ${sugar1}
+                    </ul>
+                </div>
+                <div id="aad4" class="thelfloat cd_r mr-4">
+                    <a href="#">
+                      <img class="therfloat" src="img/gouwuche1.png" alt="">
+                      <p id="p345" class="thefont">加入购物车</p>
+                    </a>
+                </div>
+            </div>
+        </div>  
+      </div>`;
+      
+      $("#d112").append(text);
+      
+       
+      }
+      
+    
+      $(".page_buttom>#dd3").click(function(){
+        if(a<m){
+          a++
+        }
+       
+        $("#d112").empty();
+        $.ajax({
+          url:"http://127.0.0.1:8080/user/select",
+          type: "get",
+          data:{ fid:`${a}`},
+          dataType:"json",
+          success:function( result ){
+            let thecount=Math.ceil(result.result[0]['count']/4);
+            m=thecount;
+           /* if(a<thecount){
+            a++
+           }*/
+           a=result.pid;
+           
+           $(".page_buttom>p").html(a)
+          
+          
+           var sugar3=``;
+           for(var j=0;j<result.results.length;j++){
+             for(m=0;m<result.results[j].sugar;m++){
+              sugar3=sugar3+`<li><img class="theimg1" src="img/tang.png" alt=""></li>`;
+             }
+             
+           
+            
+             
+             var text4=` <div class="col-lg-6 col-md-12 p-0 m-0 d-flex just-content-center mb-5">
+        <div>
+          <div class="theli ml-3">
+            <a href=""><img class="theborderl  thetotal m-0 " src="${result.results[j].cake_pic}" alt=""></a>
+            <div class="cw_l">
+              <span class="spl">
+                ${result.results[j].name}
+              </span>
+              <span class="spr">
+                ${result.results[j].price}
+              </span>
+            </div>
+            <div class="cw_down">
+                <div class="cd_l pl-3 mt-2 pt-1 tmt d-flex">
+                  <p class="thhline thehight">甜度:</p>
+                  <ul class="list-unstyled d-flex theline ml-2">
+                      ${sugar3}
+                    </ul>
+                </div>
+                <div id="t66" class="thelfloat cd_r mr-4">
+                    <a href="#">
+                      <img class="therfloat" src="img/gouwuche1.png" alt="">
+                      <p id="p345" class="thefont thefont12">加入购物车</p>
+                    </a>
+                </div>
+            </div>
+        </div>  
+      </div>`
+      sugar3=``;
+      $("#d112").append(text4);
+      }
+      $("#d112>div>div>div>a>img").mouseenter(function(){
+       
+       var $this=$(this);
+       $this.removeClass("thetotal");
+     })
+     $("#d112>div>div>div>a>img").mouseenter(function(){
+       var $this=$(this);
+       $this.addClass("thetotal1");
+     })
+     $("#d112>div>div>div>a>img").mouseleave(function(){
+       var $this=$(this);
+       $this.removeClass("thetotal1");
+     })
+     $("#d112>div>div>div>a>img").mouseleave(function(){
+       var $this=$(this);
+       $this.addClass("thetotal");
+     })
+     $("d112>div>div>div>div>a>p").mouseenter(function(){
+       console.log("已经绑定购物车")
+     })
+     $("#t66>a>p").click(function(){
+       var c=[];
+       var $this=$(this);
+        var nameimg=$this.parent().parent().parent().parent().find("span").html();
+        var nameimg1=$this.parent().parent().parent().parent().find(".spr").html();
+            thename=$this.parent().parent().parent().parent().find(".spl").html();
+        var nameimg2=parseInt(nameimg1.replace(/[^0-9]/ig,""))/100;
+        $("#dddgou>div>div>label").each(function(index){
+          var $this1=$(this);
+          nameimg2=nameimg2+100;
+          $this1.html(nameimg2);
+          
+          if($this1.siblings("input").prop("checked")==true){
+            c[0]=nameimg2
+          }
+         
+        })
+        
+        var test34=$("#dddgou>div>div>label");
+        $("#dddgou").css("display","block");
+      })
+      //------------------------------------
+
+
+
+      //======================================
+         
+          }
+        })
+      })
+      
+      $(".page_buttom>#dd4").click(function(){
+        
+        if(a>1){
+            a=a-1;
+          }
+          $(".page_buttom>p").html(a)
+        $("#d112").empty();
+        $.ajax({
+          url:"http://127.0.0.1:8080/user/select",
+          type: "get",
+          data:{ fid:`${a}`},
+          dataType:"json",
+          success:function( result ){
+            
+            let thecount=Math.ceil(result.result[0]['count']/4)
+          
+          
+           var sugar3=``;
+           
+          
+           for(var j=0;j<result.results.length;j++){
+             for(m=0;m<result.results[j].sugar;m++){
+              sugar3=sugar3+`<li><img class="theimg1" src="img/tang.png" alt=""></li>`;
+             }
+            
+           
+            
+             
+             var text4=` <div class="col-lg-6 col-md-12 p-0 m-0 d-flex just-content-center mb-5">
+        <div>
+          <div id="named" class="theli ml-3">
+            <a href=""><img class="theborderl  thetotal m-0 " src="${result.results[j].cake_pic}" alt=""></a>
+            <div class="cw_l">
+              <span class="spl">
+                ${result.results[j].name}
+              </span>
+              <span class="spr">
+                ${result.results[j].price}
+              </span>
+            </div>
+            <div class="cw_down">
+                <div class="cd_l pl-3 mt-2 pt-1 tmt d-flex">
+                  <p class="thhline thehight">甜度:</p>
+                  <ul class="list-unstyled d-flex theline ml-2">
+                      ${sugar3}
+                    </ul>
+                </div>
+                <div id="t99" class="thelfloat cd_r mr-4">
+                    <a href="#">
+                      <img class="therfloat" src="img/gouwuche1.png" alt="">
+                      <p id="p466" class="thefont thefont66">加入购物车</p>
+                    </a>
+                </div>
+            </div>
+        </div>  
+      </div>`
+      sugar3=``;
+      $("#d112").append(text4);
+      }
+ 
+           $("#d112>div>div>div>a>img").mouseenter(function(){
+       
+       var $this=$(this);
+       $this.removeClass("thetotal");
+     })
+     $("#d112>div>div>div>a>img").mouseenter(function(){
+       var $this=$(this);
+       $this.addClass("thetotal1");
+     })
+     $("#d112>div>div>div>a>img").mouseleave(function(){
+       var $this=$(this);
+       $this.removeClass("thetotal1");
+     })
+     $("#d112>div>div>div>a>img").mouseleave(function(){
+       var $this=$(this);
+       $this.addClass("thetotal");
+     })
+     $("#t99>a>p").click(function(){
+       var c=[];
+       var $this=$(this);
+        var nameimg=$this.parent().parent().parent().parent().find("span").html();
+        var nameimg1=$this.parent().parent().parent().parent().find(".spr").html();
+            thename=$this.parent().parent().parent().parent().find(".spl").html();
+        var nameimg2=parseInt(nameimg1.replace(/[^0-9]/ig,""))/100;
+        $("#dddgou>div>div>label").each(function(index){
+          var $this1=$(this);
+          nameimg2=nameimg2+100;
+          $this1.html(nameimg2);
+         
+          if($this1.siblings("input").prop("checked")==true){
+            c[0]=nameimg2
+          }
+         
+        })
+        
+        var test34=$("#dddgou>div>div>label");
+        $("#dddgou").css("display","block");
+      })
+          
+          }
+        })
+        //--------------------------------
+       
+
+        //===========================
+      })
+
+      var text1=``;
+      $("body").append(text1);
+      
+    
+     $("#d112>div>div>div>a>img").mouseenter(function(){
+       
+       var $this=$(this);
+       $this.removeClass("thetotal");
+     })
+     $("#d112>div>div>div>a>img").mouseenter(function(){
+       var $this=$(this);
+       $this.addClass("thetotal1");
+     })
+     $("#d112>div>div>div>a>img").mouseleave(function(){
+       var $this=$(this);
+       $this.removeClass("thetotal1");
+     })
+     $("#d112>div>div>div>a>img").mouseleave(function(){
+       var $this=$(this);
+       $this.addClass("thetotal");
+     })
+     $("#aad4>a>p").click(function(){
+       var $this=$(this);
+        var nameimg=$this.parent().parent().parent().parent().find("span").html();
+        var nameimg1=$this.parent().parent().parent().parent().find(".spr").html();
+            thename=$this.parent().parent().parent().parent().find(".spl").html();
+        var nameimg2=parseInt(nameimg1.replace(/[^0-9]/ig,""))/100;
+        $("#dddgou>div>div>label").each(function(index){
+          var $this1=$(this);
+          nameimg2=nameimg2+100;
+          $this1.html(nameimg2);
+          console.log($this1.siblings("input").prop("checked"))
+        })
+        
+        var test34=$("#dddgou>div>div>label");
+        $("#dddgou").css("display","block");
+      })
+      $("#buy").click(function(){
+        
+         var test55=[]
+        $("#dddgou>div>div>label").each(function(index){
+          var $this2=$(this);
+          if($this2.siblings("input").prop("checked")==true){
+            test55[0]=$this2.html();
+          }
+        })
+        test55[1]=thename;
+        test55[2]="img/"+thename.trim()+".jpg";
+        test55[3]=1;
+        test55[4]="img/"+thename.trim()+".jpg";
+        test55[5]=1;
+        var obj={
+          price:test55[1],
+          item:test55[0],
+          time:test55[2],
+          count:1,
+          address:test55[4],
+          solor_price:test55[1],
+          weight:1
+        }
+        
+        console.log(test55[4],test55[3],test55[2],test55[1],test55[0])
+        $.ajax({
+          url:'http://127.0.0.1:8080/user/chart',
+          type:"get",
+          data:{test:test55},
+          dataType:"json",
+          success:function(result){
+           
+            window.confirm(`您在${result.code.test[2]}时间买了${result.code.test[1]}蛋糕，这个蛋糕花费了${result.code.test[0]},请登录进入购物车页面`)
+            document.cookie=`TIMES=${result.code.test[2]};CAKE=${result.code.test[1]};PRICE=${result.code.test[0]};单价是"`;
+            var ttcount=parseInt(localStorage.getItem('count'))+1;
+            console.log('55555555555555',ttcount)
+            localStorage.setItem('count', ttcount);
+            $("#span111").html(parseInt(ttcount));
+          }
+        })
+       })
+      }
+    })
+    var rrt=localStorage.getItem('count')
+    console.log("rrrrrrrrrrrrrrrrrr",$("#span111"))
+    $("#span111").html(parseInt(rrt));
+    var $test=$("#d112>div>div>div>a>img");
+    
+  </script>
+
+<div  class="container-fuild ww">
+  <div class="d-flex just-content-center thefooter1">
+    <ul class="list-unstyled d-flex" id="u1a">
+      <li>
+        <img src="img/footer_lg.png" alt="">
+      </li>
+      <li>
+        <div class="ml-3">
+          <ul id="d16" class="list-unstyled d-flex justify-content-around w-50 pl-4">
+            <li><a href="">订购指南</a></li>
+            <li><a href="">配送方式</a></li>
+            <li><a href="">练习我们</a></li>
+          </ul>
+          
+          <p id="p11" class="pl-4 pt-4">
+            ©2017 麦雪蛋糕官网 版权所有
+            <a href="">：桂ICP备17002731号</a>
+            
+          </p>
+          <p style="color:white; font-size: 12px; font-family:宋体;" class="pl-4">地址：南宁市西乡塘区大学西路65号西明商业广场 预定热线： 0771-3928662 手机预定：13617886627</p>
+        </div>
+      </li>
+      <li>
+        <img id="uimg" class="pl-3" src="img/fr_logo.png" alt="">
+        <div>
+          <ul id="uimg1" class="list-unstyled d-flex justify-content-around ml-4">
+            <li>
+              <p>分享到</p>
+              <a href=""><img src="img/11.jpg" alt=""></a>
+            </li>
+            <li><a href=""><img src="img/12.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/13.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/14.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/15.jpg" alt=""></a></li>
+            <li><a href=""><img src="img/16.jpg" alt=""></a></li>
+          </ul>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+<div id="dddgou" class="gouwuche">
+  <div class="gowuche2">
+    <h4 class="wenzi m-1">请选择商品属性</h4>
+    <div style="border-top:1px solid #ccc"></div>
+    <h6 class="wenzih6 m-1 ml-2">磅数</h6>
+    <div class="ml-2">
+      <input type="radio" id="ddd111" name="mycake" checked="1">
+      <font>1磅</font>
+       [
+       <label class="m-0" style="color: red;" for="">￥368.00元</label>
+        ]
+    </div>
+    <div class="ml-2">
+       
+      <input type="radio" id="ddd111" name="mycake">
+      <font>2磅</font>
+      [
+      <label class="m-0" style="color:red" for="">￥168.00元</label>
+      ]
+    </div>
+    
+    <div class="ml-2">
+      <input type="radio" id="ddd111" name="mycake">
+      <font>3磅</font>
+      [
+      <label clss="m-0" style="color:red" for="">￥268.00元</label>
+      ]
+    </div>
+    <div style="border-top:1px solid #ccc"></div>
+    <p style="font-family: Arial, Helvetica, sans-serif; color:#515151; font-size: 14px;" class="ml-2 mt-3">场景</p>
+    <p style="font-family: Arial, Helvetica, sans-serif; color:#515151; font-size: 14px;" class="ml-2 mb-0">所有场景</p>
+    <div style="border-top:1px solid #ccc"></div>
+    <p style="font-family: Arial, Helvetica, sans-serif; color:#515151; font-size: 14px;" class="ml-2 mt-3">适合节日</p>
+    <p style="font-family: Arial, Helvetica, sans-serif; color:#515151; font-size: 14px;" class="ml-2 mb-0">所有节日</p>
+    <center>
+      <a id="buy" href="#" class="gouwuchea">购买</a>
+      <a id="cancel1" href="#" class="gouwucheb">取消</a>
+    </center>
+  </div>
+</div>
+<script>
+   console.log("测试代码 ",$("#cancel1"))
+    $("#dddgou>div>center>a:last-child").click(function(){
+      $("#dddgou").css("display","none");
+    })
+</script>
+
+
+</body>
+
+</html>
